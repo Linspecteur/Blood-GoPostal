@@ -1,128 +1,152 @@
-# Livreur GoPostal (bl_gopostal)
+<div align="center">
+  <img src="https://img.shields.io/badge/FiveM-Script-orange?style=for-the-badge&logo=fivem&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framework-ESX%20%7C%20QBCore%20%7C%20Qbox%20%7C%20ox__core-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Author-BloodLeak-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-BloodLeak-green?style=for-the-badge" />
 
-![FiveM](https://img.shields.io/badge/FiveM-Script-orange?style=flat-square)
-![Framework](https://img.shields.io/badge/Framework-ESX%20%7C%20QBCore%20%7C%20Qbox%20%7C%20ox__core-blue?style=flat-square)
-![Licence](https://img.shields.io/badge/Licence-voir%20LICENSE-lightgrey?style=flat-square)
+  <h1>📦 Livreur GoPostal (bl_gopostal)</h1>
+  <p><i>Job de livraison intérimaire complet, en solo ou en équipe, pour serveurs FiveM</i></p>
+</div>
 
-Job de livraison intérimaire pour FiveM, ouvert à tous sans changer de métier : on charge le van au dépôt, on livre les colis porte à porte, seul ou en équipe, et on progresse sur 5 niveaux. Menu admin complet avec statistiques et événements « rush ».
+---
 
-## Fonctionnalités
+## 📖 À propos
 
-- **Tournées** : 6 tournées (quartier, standard, express, gros volume, Blaine County, clients premium), débloquées par niveau. Caution du van prélevée au départ, rendue selon l'état du véhicule, prime si tout est livré.
-- **Livraison réaliste** : chargement des colis un par un depuis la palette, colis porté à la main jusqu'à la porte, client présent ou absent, note de 1 à 5 étoiles et pourboires.
-- **Types de colis** : standard, petit, fragile (abîmé par les chocs), lourd (pas de course), express (délai, +40 %), contre signature, paiement à la livraison (liquide à rapporter, commission), volumineux (à porter à deux).
-- **Tournée en équipe** : le chef de tournée invite un collègue pendant le chargement. Un seul van, paie des colis partagée avec +15 %, XP complète pour chacun.
-- **Preuve de dépôt** : client absent, il faut prendre le colis en photo devant la porte, sinon une étoile en moins.
-- **Tri au dépôt** : mini-jeu facultatif avant le départ, chaque colis va dans le bac de son quartier. Bonus en cash et XP, tri parfait = prime de fin augmentée.
-- **Nuit et météo** : de 22 h à 6 h et par mauvais temps (pluie, orage, neige), colis mieux payés. La nuit les clients ouvrent moins, sous la pluie les fragiles craignent plus les chocs.
-- **Progression** : 5 niveaux avec multiplicateur de paie, prime de promotion, van amélioré, tenue exclusive et plaque personnalisée.
-- **Missions** du jour et de la semaine, **succès** permanents (badges), **série** de jours consécutifs (+3 % par jour, max +15 %).
-- **Satisfaction et clients premium** : moyenne des 50 dernières notes. À 4,5 ★, la tournée premium se débloque (paie x1,35, gros pourboires, clients exigeants).
-- **Classement hebdomadaire** : top 3 récompensé automatiquement chaque lundi (versé à la connexion si le joueur est hors ligne).
-- **HUD de tournée** : prochain arrêt, délais express, carnet de tournée dépliable (F7), argent encaissé, équipe, météo et événement en cours. Fiche de paie détaillée en fin de tournée.
-- **Anti-abus** : vérifications côté serveur (distances, délais, van à proximité), plafond de gains par heure, van abandonné ou déplacé pendant le chargement = tournée échouée, alertes staff sur Discord.
-- **Marque modifiable** : nom, logo, couleur et plaques (GoPostal par défaut, Amazon, DHL…). Véhicule et couleur réglables par tournée.
+**bl_gopostal** est un job de livraison du **pôle intérimaire** : ouvert à tous, sans changer de métier. Le joueur parle au responsable du dépôt, charge son van colis par colis, livre porte à porte et rend le van pour toucher sa prime.
 
-## Prérequis
+Tournées en équipe, progression sur 5 niveaux, missions, succès, classement hebdomadaire et menu admin avec statistiques et événements « rush ». Compatible **ESX, QBCore, Qbox et ox_core**, avec détection automatique.
 
-Un framework parmi :
+---
 
-- [es_extended](https://github.com/esx-framework/esx-legacy) (ESX)
-- [qb-core](https://github.com/qbcore-framework/qb-core) (QBCore)
-- [qbx_core](https://github.com/Qbox-project/qbx_core) (Qbox)
-- [ox_core](https://github.com/overextended/ox_core), avec [ox_inventory](https://github.com/overextended/ox_inventory) si `Config.Account = 'cash'`
+## ✨ Fonctionnalités Clés
 
-Le framework est détecté automatiquement (ou forcé avec `Config.Framework`).
+### 🚚 Tournées & Livraison Réaliste
+- **6 tournées** : quartier, standard, express, gros volume (camion Benson), Blaine County et clients premium, débloquées par niveau.
+- **Caution du van** prélevée au départ, rendue selon l'état du véhicule. Prime de fin de tournée si tout est livré.
+- **Chargement manuel** des colis depuis la palette, colis porté à la main jusqu'à la porte, client présent ou absent.
+- **Note client de 1 à 5 étoiles** et pourboires. La paie dépend de la distance, du niveau et de la note.
 
-Intégrations optionnelles, utilisées si la ressource est lancée :
+### 📦 Types de Colis
+- **Standard, petit, fragile** (abîmé par les chocs du van), **lourd** (impossible de courir), **express** (délai, +40 %).
+- **Contre signature** : le client doit être là, sinon il faut repasser.
+- **Paiement à la livraison** : le liquide est rapporté au dépôt, le livreur touche une commission.
+- **Volumineux** : à porter à deux, l'aide est payée.
 
-| Réglage | Ressources reconnues |
-|---|---|
-| `Config.Target` | ox_target, qb-target (sinon touche E) |
-| `Config.Notify` | notifications du job, ox_lib, ESX, QBCore, okokNotify, ou fonction perso |
-| `Config.Keys` | bl_key, qb-vehiclekeys, qbx_vehiclekeys, qs-vehiclekeys, Renewed-Vehiclekeys, wasabi_carlock, MrNewbVehicleKeys, cd_garage |
-| `Config.Fuel` | LegacyFuel, ox_fuel, cdn-fuel, ps-fuel, lc_fuel, qs-fuelstations, okokGasStation, Renewed-Fuel |
+### 👥 Tournée en Équipe
+- Pendant le chargement, le chef de tournée **invite un collègue** depuis le menu du responsable.
+- Un seul van, colis partagés : paie de chaque colis **répartie à parts égales avec +15 %**, pourboire pour celui qui sonne, **XP complète** pour chacun.
+- Un coéquipier quitte l'équipe sans pénalité. Si le chef se déconnecte, personne n'est pénalisé.
 
-## Installation
+### 📸 Preuve de Dépôt & Tri au Dépôt
+- **Client absent** : le colis est posé devant la porte et doit être **pris en photo** dans les 20 s, sinon une étoile en moins.
+- **Tri au dépôt** : mini-jeu facultatif avant le départ, chaque colis va dans le bac de son quartier d'après le code de l'étiquette. Bonus en cash et XP, **tri parfait = prime de fin +10 %**.
 
-1. Placer le dossier `bl_gopostal` dans `resources/` (par exemple dans `resources/[JOB INTERIME]/`).
-2. Ajouter dans `server.cfg` :
+### 🌙 Nuit, Météo & Événements
+- **Nuit** (22 h – 6 h) : colis +25 % et XP +15 %, mais les clients ouvrent moins souvent.
+- **Mauvais temps** (pluie, orage, neige) : colis mieux payés, fragiles plus sensibles aux chocs.
+- **Rush** lancé par un admin (« Double paie », « Black Friday »…) : multiplicateurs de paie, d'XP et de colis, annoncés à tous les joueurs.
+
+### 🏆 Progression & Récompenses
+- **5 niveaux** avec multiplicateur de paie, prime de promotion, van amélioré, tenue exclusive et plaque personnalisée.
+- **Missions** du jour et de la semaine, **succès** permanents (badges), **série de jours** consécutifs (+3 % par jour, max +15 %).
+- **Satisfaction & clients premium** : à 4,5 ★ de moyenne, la tournée premium se débloque (paie x1,35, gros pourboires).
+- **Classement hebdomadaire** : top 3 payé automatiquement chaque lundi, versé à la connexion si le joueur est hors ligne.
+
+### 🗺️ HUD de Tournée
+- Prochain arrêt, délais express, **carnet de tournée** dépliable (F7), liquide encaissé, équipe, météo et événement en cours.
+- **Fiche de paie** détaillée en fin de tournée, fermable avec F7.
+
+### 🛡️ Anti-Abus & Alertes Staff
+- **Vérifications côté serveur** : distances, délais entre deux actions, van à proximité de l'adresse.
+- **Plafond de gains par heure**. Van abandonné ou sorti du dépôt avant la fin du chargement = tournée échouée.
+- **Alertes Discord** : gains anormaux, liquide non rendu, téléportation probable, events déclenchés à la main.
+
+### 🔌 Intégrations Automatiques
+- **Ciblage** : ox_target, qb-target (sinon touche E).
+- **Notifications** : celles du job, ox_lib, ESX, QBCore, okokNotify ou fonction personnalisée.
+- **Clés** : bl_key, qb-vehiclekeys, qbx_vehiclekeys, qs-vehiclekeys, Renewed-Vehiclekeys, wasabi_carlock, MrNewbVehicleKeys, cd_garage.
+- **Carburant** : LegacyFuel, ox_fuel, cdn-fuel, ps-fuel, lc_fuel, qs-fuelstations, okokGasStation, Renewed-Fuel.
+
+---
+
+## 📋 Configuration (`config.lua`)
+
+```lua
+-- Marque entièrement modifiable (UI, plaques)
+Config.Brand = { name = 'GoPostal', logo = 'GP', color = '#ffcc00', logoColor = '#1b2f7a', pole = 'Pôle intérimaire', plate = 'GOP' }
+
+Config.Account = 'bank'      -- compte crédité et débité : 'bank' ou 'cash'
+Config.Deposit = 500         -- caution du van
+Config.Cooldown = 60         -- délai entre deux tournées (secondes)
+
+Config.Target = 'auto'       -- 'auto', 'ox_target', 'qb-target' ou false
+Config.Notify = 'nui'        -- 'nui', 'ox_lib', 'esx', 'qb', 'okok' ou 'custom'
+Config.Keys = 'auto'         -- 'auto', false ou une liste de ressources
+
+-- Chaque tournée a son véhicule et peut avoir son propre style
+{
+    id = 'volume', label = 'Gros volume', zone = 'ville',
+    parcels = { min = 9, max = 12 }, level = 3, vehicle = 'benson', bonus = 1200,
+    style = { color = { 96, 96 } }   -- camion marron
+}
+```
+
+Pour passer en Amazon, DHL ou autre, il suffit de changer `Config.Brand` : toute l'interface et les plaques suivent.
+
+---
+
+## 🚀 Installation
+
+1. Placez le dossier `bl_gopostal` dans votre répertoire de ressources (par exemple `resources/[JOB INTERIME]/`).
+2. Ajoutez dans votre `server.cfg` :
    ```cfg
    ensure bl_gopostal
    add_ace group.admin bl_gopostal.admin allow
    ```
-3. Régler `config.lua` (marque, compte crédité, caution, tournées, paie, intégrations).
-4. En jeu, avec `/postaladmin` > **Positions** : recaler le PNJ, les places de van (une par livreur simultané) et la zone de retour. Vérifier quelques adresses, les coordonnées par défaut sont approximatives.
+3. Réglez [config.lua](config.lua) : marque, compte, caution, tournées, paie et intégrations.
+4. En jeu, ouvrez `/postaladmin` > **Positions** et recalez le PNJ, les places de van (une par livreur simultané) et la zone de retour. Vérifiez aussi quelques adresses : les coordonnées par défaut sont approximatives.
 
-### Accès au menu admin
+Avec ox_core et `Config.Account = 'cash'`, [ox_inventory](https://github.com/overextended/ox_inventory) est requis.
 
-Un joueur a accès à `/postaladmin` si une de ces sources le permet (`Config.Admin`) :
+---
 
-- la permission ace `bl_gopostal.admin` ;
-- son groupe ESX (`owner`, `superadmin`, `admin` par défaut) ;
-- une permission QBCore (`god`, `admin` par défaut) ;
-- la permission `bl.gopostal` de `bl_admin` (ressource propre au serveur BloodLeak, non fournie).
+## 🎮 Commandes & Touches
 
-## Commandes et touches
+| Commande / Touche | Type | Description |
+| :--- | :--- | :--- |
+| `E` | Touche | Interagir : PNJ, palette, van, porte, photo, retour du van |
+| `G` | Touche | Lancer le tri au dépôt, à la palette |
+| `F7` / `/postalcarnet` | Touche | Déplier le carnet de tournée, fermer la fiche de fin de tournée |
+| `/postalannuler` | Commande | Abandonner sa tournée (caution perdue), ou quitter l'équipe |
+| `/postaladmin` | Commande | Ouvrir le menu admin |
+| `/postalpos` | Commande | (admin) Afficher sa position dans la console F8 |
 
-| Touche | Commande | Rôle |
-|---|---|---|
-| `E` | | Interagir (PNJ, palette, van, porte, photo, retour du van) |
-| `G` | | Lancer le tri au dépôt, à la palette |
-| `F7` | `/postalcarnet` | Déplier le carnet de tournée, fermer la fiche de fin de tournée |
-| | `/postalannuler` | Abandonner sa tournée (caution perdue), ou quitter l'équipe |
-| | `/postaladmin` | Menu admin |
-| | `/postalpos` | (admin) Afficher sa position dans la console F8 |
+---
 
-F7 se change dans `config.lua` (`Config.Logbook.key`) ou dans les paramètres de touches FiveM du joueur. Les commandes se renomment en bas de `config.lua`.
+## 🛠️ Menu Admin (`/postaladmin`)
 
-## Menu admin
-
-| Onglet | Contenu |
-|---|---|
-| **En cours** | Tournées actives, équipe, progression, gains. Aller voir ou annuler (caution rendue). |
-| **Réglages** | Caution, paie, XP, chances de présence et de pourboire, délai entre deux tournées, plafond horaire, récompenses du classement, prime de nuit, seuil premium. Ouverture / fermeture du recrutement. |
-| **Positions** | PNJ, places de van, zone de retour et adresses de livraison, placés à sa position en jeu. |
+| Onglet | Description |
+| :--- | :--- |
+| **En cours** | Tournées actives, équipe, progression et gains. Aller voir ou annuler (caution rendue). |
+| **Réglages** | Caution, paie, XP, présence des clients, délais, plafond horaire, récompenses du classement. Ouverture / fermeture du recrutement. |
+| **Positions** | PNJ, places de van, zone de retour et adresses, placés à votre position en jeu. |
 | **Livreurs** | Profils, réglage manuel du niveau, remise à zéro. |
-| **Statistiques** | Sur 7, 14 ou 30 jours : argent distribué par jour, taux de réussite et d'échec, colis, livreurs actifs, durée moyenne, tournées les plus jouées, causes d'échec. |
-| **Événement** | Rush (« Double paie », « Black Friday »…) : multiplicateurs de paie, d'XP et de colis pendant une durée donnée, annoncé à tous les joueurs. |
+| **Statistiques** | Sur 7, 14 ou 30 jours : argent distribué, taux de réussite et d'échec, tournées les plus jouées, causes d'échec. |
+| **Événement** | Lancer ou arrêter un rush, à partir de modèles ou de multiplicateurs personnalisés. |
 | **Historique** | Les dernières tournées et leur résultat. |
 
-## Alertes Discord
+Accès accordé par la permission ace `bl_gopostal.admin`, un groupe ESX, une permission QBCore ou `bl_admin` (voir `Config.Admin`).
 
-`Config.Webhook` reçoit les fins de tournée et le classement de la semaine. `Config.Alerts` (webhook séparé possible, avec ping de rôle) prévient le staff en cas de :
+Données (réglages, profils, historique, statistiques, événement en cours) stockées dans `data/*.json`.
 
-- gains au-delà de `hourlyEarn` sur l'heure glissante ;
-- liquide de paiement à la livraison non rendu (abandon, van détruit, déconnexion) ;
-- déplacement trop rapide entre deux livraisons (téléportation probable) ;
-- actions refusées à répétition par le serveur (events déclenchés à la main) ;
-- van sorti du dépôt avant la fin du chargement.
+---
 
-Une alerte du même type pour un même joueur au plus toutes les 10 minutes (`throttle`).
+## 📜 Licence
 
-## Personnalisation
+Utilisation gratuite sur votre serveur, modifications autorisées pour votre usage. Revente, réupload et retrait des crédits interdits. Détails dans [LICENSE](LICENSE).
 
-### Changer de marque
+---
 
-```lua
-Config.Brand = { name = 'Amazon', logo = 'a', color = '#ff9f1c', logoColor = '#1a1208', pole = 'Pôle intérimaire', plate = 'AMZ' }
-```
-
-Toute l'interface et les plaques suivent.
-
-### Véhicules
-
-- Chaque tournée a son véhicule (`vehicle` dans `Config.Tours`) et peut avoir son propre `style` (couleur, livrée, extras). Par défaut, la tournée Gros volume utilise un Benson marron, les autres le van GoPostal (`boxville2`).
-- **Véhicule add-on** : mettre son nom de spawn dans `vehicle`.
-- **Remplacement du `speedo`** : streamer les `.yft` / `.ytd` dans une ressource à part, puis mettre `speedo` dans `vehicle`. Cela remplace tous les Speedo du serveur.
-- Style commun à tous les vans : `Config.VanStyle`.
-
-## Données
-
-Réglages, profils, historique, statistiques et événement en cours sont stockés dans `data/*.json`. Les profils sont rangés par identifiant de personnage (ESX : identifier, QBCore / Qbox : citizenid, ox_core : charId) : changer de framework repart de profils vierges.
-
-## Licence
-
-Utilisation gratuite sur ton serveur, modifications autorisées pour ton usage. Revente, réupload et retrait des crédits interdits. Détails dans [LICENSE](LICENSE).
-
-Développé par **BloodLeak**.
+<div align="center">
+  <p><i>Développé avec passion par <b>BloodLeak</b>. Des designs haut de gamme et des performances optimisées pour votre communauté FiveM.</i></p>
+</div>
