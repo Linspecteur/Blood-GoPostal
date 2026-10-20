@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>bl_gopostal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Icônes -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-box" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+            <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+            <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+            <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+            <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+            <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+            <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+            <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+            <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+            <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+            <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+            <symbol id="i-cash" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></symbol>
+            <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+            <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+            <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+            <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+            <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M2 14h4M10 8h4M18 16h4"/></symbol>
+            <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+            <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16v-4"/><path d="M11 16V8"/><path d="M15 16v-6"/><path d="M19 16V5"/></symbol>
+            <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+            <symbol id="i-user-plus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+            <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+        </defs>
+    </svg>
+
+    <!-- Menu du dépôt -->
+    <div class="menu" id="menu" hidden>
+        <div class="menu-card">
+            <header class="menu-head">
+                <div class="brand">
+                    <span class="brand-logo long">GP</span>
+                    <div>
+                        <strong id="m-brand">GoPostal</strong>
+                        <span class="kicker" id="m-pole">Pôle intérimaire</span>
+                    </div>
+                </div>
+                <div class="head-right">
+                    <span class="lvl-chip" id="m-lvl">Niv. 1</span>
+                    <span class="npc" id="npc-name">Responsable du dépôt</span>
+                </div>
+            </header>
+
+            <nav class="tabs">
+                <button class="tab active" data-tab="tours" type="button"><svg class="ic"><use href="#i-route"/></svg>Tournées</button>
+                <button class="tab" data-tab="missions" type="button"><svg class="ic"><use href="#i-target"/></svg>Missions</button>
+                <button class="tab" data-tab="career" type="button"><svg class="ic"><use href="#i-award"/></svg>Ma carrière</button>
+                <button class="tab" data-tab="ranking" type="button"><svg class="ic"><use href="#i-trophy"/></svg>Classement</button>
+                <button class="tab" data-tab="infos" type="button"><svg class="ic"><use href="#i-info"/></svg>Comment ça marche</button>
+            </nav>
+
+            <!-- Tournées -->
+            <section class="pane" data-tab="tours">
+                <div class="rush-banner" id="rush-banner" hidden>
+                    <span class="rush-ic"><svg class="ic"><use href="#i-zap"/></svg></span>
+                    <div><b id="rb-label">—</b><span id="rb-text">—</span></div>
+                    <span class="mono" id="rb-left">—</span>
+                </div>
+                <div class="invite-box" id="invite-box" hidden>
+                    <span class="rush-ic"><svg class="ic"><use href="#i-users"/></svg></span>
+                    <div><b id="ib-title">—</b><span id="ib-text">—</span></div>
+                    <div class="invite-acts">
+                        <button class="btn ghost sm" id="ib-decline" type="button">Refuser</button>
+                        <button class="btn primary sm" id="ib-accept" type="button">Rejoindre</button>
+                    </div>
+                </div>
+                <div id="tours-active" hidden>
+                    <div class="active-box">
+                        <span class="kicker" id="ta-kicker">Tournée en cours</span>
+                        <strong id="ta-label">—</strong>
+                        <span id="ta-progress">—</span>
+                        <p id="ta-text">Termine ta tournée puis ramène le van dans la zone de retour du dépôt. Abandonner fait perdre la caution.</p>
+                    </div>
+                    <div class="team-box" id="team-box" hidden>
+                        <h3 class="sub-title">Équipe <span class="sub-note" id="team-note"></span></h3>
+                        <div class="team-members" id="team-members"></div>
+                        <div class="team-cands" id="team-cands"></div>
+                    </div>
+                </div>
+                <div class="tour-grid" id="tour-list"></div>
+            </section>
+
+            <!-- Missions -->
+            <section class="pane" data-tab="missions" hidden>
+                <p class="pane-intro">Les mêmes missions pour tous les livreurs. La récompense est versée dès qu'une mission est remplie.</p>
+                <h3 class="sub-title">Missions du jour <span class="sub-note">renouvelées à minuit</span></h3>
+                <div class="missions" id="mi-daily"></div>
+                <h3 class="sub-title">Missions de la semaine <span class="sub-note">renouvelées le lundi</span></h3>
+                <div class="missions" id="mi-weekly"></div>
+            </section>
+
+            <!-- Carrière -->
+            <section class="pane" data-tab="career" hidden>
+                <div class="career-head">
+                    <div class="lvl-big"><span>Niveau</span><b id="c-level">1</b></div>
+                    <div class="career-title">
+                        <strong id="c-title">Intérimaire</strong>
+                        <span id="c-mult">Paie x1,00</span>
+                        <div class="xpbar"><i id="c-xpbar"></i></div>
+                        <span class="xp-text mono" id="c-xp">0 / 250 XP</span>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div><span>Colis livrés</span><b id="c-delivered">0</b></div>
+                    <div><span>Tournées</span><b id="c-tours">0</b></div>
+                    <div><span>Gains totaux</span><b id="c-earned">0 $</b></div>
+                    <div><span id="c-sat-label">Satisfaction</span><b id="c-rating">—</b></div>
+                    <div><span>Colis cette semaine</span><b id="c-week">0</b></div>
+                    <div><span>Gains cette semaine</span><b id="c-week-earned">0 $</b></div>
+                    <div><span>Pourboires</span><b id="c-tips">0 $</b></div>
+                    <div><span>Prochain niveau</span><b id="c-next">—</b></div>
+                </div>
+                <div class="streak-box" id="c-streak" hidden>
+                    <span class="rush-ic"><svg class="ic"><use href="#i-flame"/></svg></span>
+                    <div><b id="cs-title">—</b><span id="cs-text">—</span></div>
+                    <span class="mono" id="cs-bonus">—</span>
+                </div>
+                <h3 class="sub-title">Succès <span class="sub-note" id="c-ach-count"></span></h3>
+                <div class="badges" id="c-badges"></div>
+                <h3 class="sub-title">Échelons et récompenses</h3>
+                <div class="ladder" id="c-ladder"></div>
+                <div class="plate-box" id="c-plate-box" hidden>
+                    <div>
+                        <b>Plaque personnalisée</b>
+                        <span>Affichée sur ton van à chaque tournée. 8 caractères, lettres et chiffres.</span>
+                    </div>
+                    <input type="text" id="c-plate" maxlength="8" placeholder="GOP 001" spellcheck="false">
+                    <button class="btn primary sm" id="c-plate-save" type="button">Enregistrer</button>
+                </div>
+            </section>
+
+            <!-- Classement -->
+            <section class="pane" data-tab="ranking" hidden>
+                <p class="pane-intro">Meilleurs livreurs de la semaine. Remis à zéro chaque lundi.</p>
+                <div class="podium" id="rank-rewards"></div>
+                <div class="rank" id="rank-list"></div>
+            </section>
+
+            <!-- Infos -->
+            <section class="pane" data-tab="infos" hidden>
+                <ol class="steps">
+                    <li><b>Choisis une tournée</b><span>Une caution est prélevée pour le van. Elle t'est rendue au retour selon son état.</span></li>
+                    <li><b>Charge le van</b><span>Prends les colis sur la palette et range-les à l'arrière du van, un par un.</span></li>
+                    <li><b>Livre les adresses</b><span>Gare-toi près de l'adresse, prends le colis à l'arrière du van et sonne à la porte.</span></li>
+                    <li><b>Rends le van</b><span>Ramène-le dans la zone de retour du dépôt pour toucher la prime de fin de tournée.</span></li>
+                </ol>
+                <h3 class="sub-title">Types de colis</h3>
+                <div class="parcel-table" id="parcel-table"></div>
+                <h3 class="sub-title">Bon à savoir</h3>
+                <ul class="rules">
+                    <li>Chaque colis est payé à la livraison : base + distance depuis le dépôt, multipliée par ton niveau.</li>
+                    <li>Le client te note de 1 à 5 étoiles. Une mauvaise note réduit la paie et l'expérience gagnée.</li>
+                    <li>Les colis <b>fragiles</b> s'abîment si le van prend des chocs. Conduis proprement.</li>
+                    <li>Les colis <b>express</b> ont un délai. À l'heure : <span id="i-express">+40 %</span>. En retard : mauvaise note.</li>
+                    <li>Les colis <b>lourds</b> t'empêchent de courir.</li>
+                    <li><b>Contre signature</b> : le client doit être là. S'il est absent, livre une autre adresse et repasse plus tard.</li>
+                    <li><b>Paiement à la livraison</b> : tu encaisses le liquide pour le dépôt. Ramène le van pour toucher <span id="i-cod">10 %</span> de commission. Si la tournée échoue, la somme est retenue sur ton compte.</li>
+                    <li><b>Volumineux</b> : viens avec un collègue. Il touche <span id="i-bulky">30 %</span> de la paie du colis. Seul, le client te retire une étoile.</li>
+                    <li>Un client satisfait laisse parfois un pourboire.</li>
+                    <li id="i-photo" hidden></li>
+                    <li id="i-coop" hidden></li>
+                    <li id="i-sort" hidden></li>
+                    <li id="i-weather" hidden></li>
+                    <li id="i-streak" hidden></li>
+                    <li id="i-night" hidden></li>
+                    <li id="i-premium"></li>
+                    <li id="i-cap">Au-delà d'un certain montant gagné en une heure, la paie des colis est réduite.</li>
+                    <li>Ne t'éloigne pas trop longtemps de ton van : un van abandonné annule la tournée.</li>
+                    <li>Abandon, van détruit ou déconnexion : la caution est perdue. Les colis déjà livrés restent payés.</li>
+                </ul>
+            </section>
+
+            <footer class="menu-foot">
+                <label class="outfit-pick" id="outfit-row">Tenue
+                    <select id="opt-outfit">
+                        <option value="standard">Tenue de travail</option>
+                        <option value="exclusive" id="opt-outfit-excl">Tenue exclusive</option>
+                        <option value="none">Garder mes vêtements</option>
+                    </select>
+                </label>
+                <span class="deposit" id="m-deposit">Caution : —</span>
+                <span class="deposit" id="m-night" hidden></span>
+                <p class="menu-warn" id="menu-warn" hidden></p>
+                <div class="menu-actions">
+                    <button class="btn ghost" id="btn-close" type="button">Fermer <kbd>Échap</kbd></button>
+                    <button class="btn danger" id="btn-cancel" type="button" hidden>Abandonner la tournée</button>
+                    <button class="btn primary" id="btn-start" type="button" disabled>Choisis une tournée</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- HUD de tournée -->
+    <aside class="hud" id="hud" hidden>
+        <header class="hud-head">
+            <span class="kicker" id="hud-kicker">GoPostal · Intérim</span>
+            <span class="hud-phase" id="hud-phase">Chargement</span>
+        </header>
+        <div class="hud-steps" id="hud-steps"><i data-p="loading"></i><i data-p="delivering"></i><i data-p="return"></i></div>
+
+        <div id="hud-loading">
+            <span class="hud-label">Colis chargés</span>
+            <div class="big-count"><b id="hl-count">0</b><span id="hl-total">/ 0</span></div>
+            <div class="bar"><i id="hl-bar"></i></div>
+            <p class="hud-hint">Prends les colis sur la palette et range-les à l'arrière du van.</p>
+            <p class="hud-hint sort-hint" id="hl-sort" hidden>Avant de charger : trie les colis à la palette pour un bonus.</p>
+        </div>
+
+        <div id="hud-delivering" hidden>
+            <span class="hud-label">Prochain arrêt</span>
+            <strong class="hud-addr" id="hd-addr">—</strong>
+            <div class="hud-meta"><span class="tag" id="hd-type">—</span><span class="mono" id="hd-dist">—</span></div>
+            <div class="express" id="hd-express" hidden><span>Délai express</span><b class="mono" id="hd-timer">00:00</b></div>
+            <ul class="stops" id="hd-stops"></ul>
+        </div>
+
+        <div id="hud-return" hidden>
+            <span class="hud-label">Tous les colis sont livrés</span>
+            <strong class="hud-addr">Retour au dépôt</strong>
+            <div class="hud-meta"><span class="mono" id="hr-dist">—</span></div>
+            <p class="hud-hint">Gare le van dans la zone orange pour toucher la prime et ta caution.</p>
+        </div>
+
+        <div class="carrying" id="hud-carry" hidden></div>
+        <div class="photo-cue" id="hud-photo" hidden></div>
+        <div class="cod-cash" id="hud-cod" hidden></div>
+        <div class="hud-chips" id="hud-chips" hidden></div>
+        <div class="van-far" id="hud-vanfar" hidden>Van hors de vue</div>
+
+        <footer class="hud-foot">
+            <div><span>Livrés</span><b class="mono" id="hf-done">0/0</b></div>
+            <div><span>Gains</span><b class="mono ok" id="hf-earned">0 $</b></div>
+            <div><span>Note</span><b class="mono" id="hf-rating">—</b></div>
+        </footer>
+    </aside>
+
+    <!-- Colis livré -->
+    <div class="pop" id="pop" hidden>
+        <span class="pop-ic"><svg class="ic"><use href="#i-check"/></svg></span>
+        <span class="kicker" id="pop-kicker">Colis livré</span>
+        <strong id="pop-pay">+ 0 $</strong>
+        <span class="stars" id="pop-stars"></span>
+        <span class="pop-text" id="pop-text">—</span>
+    </div>
+
+    <!-- Montée de niveau -->
+    <div class="levelup" id="levelup" hidden>
+        <span class="pop-ic"><svg class="ic"><use id="lu-icon" href="#i-award"/></svg></span>
+        <span class="kicker">Promotion</span>
+        <strong id="lu-title">—</strong>
+        <span id="lu-text">—</span>
+    </div>
+
+    <!-- Fiche de paie -->
+    <div class="payslip" id="payslip" hidden>
+        <header>
+            <span class="kicker" id="ps-kicker">Fiche de fin de tournée</span>
+            <strong id="ps-title">—</strong>
+            <span class="ps-sub" id="ps-sub">—</span>
+        </header>
+        <dl id="ps-lines"></dl>
+        <div class="ps-total"><span>Total versé</span><b class="mono" id="ps-total">0 $</b></div>
+        <div class="ps-xp" id="ps-xp"></div>
+        <div class="ps-close"><kbd id="ps-key">F7</kbd> pour fermer</div>
+    </div>
+
+    <!-- Tri au dépôt -->
+    <div class="sort" id="sort" hidden>
+        <div class="sort-card">
+            <header class="sort-head">
+                <div>
+                    <span class="kicker">Tri au dépôt</span>
+                    <strong>Range chaque colis dans le bac de son quartier</strong>
+                    <span class="sort-sub" id="so-sub">Le code du quartier est imprimé sur l'étiquette.</span>
+                </div>
+                <div class="sort-timer"><span>Temps</span><b class="mono" id="so-timer">00:40</b></div>
+            </header>
+            <div class="bar sort-bar"><i id="so-bar"></i></div>
+            <div class="sort-stage">
+                <div class="sort-parcel" id="so-parcel">
+                    <span class="kicker" id="so-count">Colis 1 / 1</span>
+                    <span class="label-code mono" id="so-code">—</span>
+                    <strong id="so-street">—</strong>
+                    <span class="tag" id="so-type">—</span>
+                </div>
+            </div>
+            <div class="sort-bins" id="so-bins"></div>
+            <footer class="sort-foot">
+                <span id="so-score">0 bien rangé</span>
+                <span class="sort-keys">Clique un bac ou utilise les touches <kbd>1</kbd>–<kbd id="so-maxkey">4</kbd></span>
+                <button class="btn ghost sm" id="so-quit" type="button">Abandonner <kbd>Échap</kbd></button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Menu admin -->
+    <div class="adm" id="adm" hidden>
+        <div class="adm-panel">
+            <nav class="adm-side">
+                <div class="adm-brand">
+                    <span class="adm-logo">GP</span>
+                    <div><strong>GoPostal</strong><span>Administration</span></div>
+                </div>
+                <button class="adm-nav active" data-tab="live" type="button"><svg class="ic"><use href="#i-activity"/></svg>En cours <b id="nav-live-count">0</b></button>
+                <button class="adm-nav" data-tab="settings" type="button"><svg class="ic"><use href="#i-sliders"/></svg>Réglages</button>
+                <button class="adm-nav" data-tab="positions" type="button"><svg class="ic"><use href="#i-pin"/></svg>Positions</button>
+                <button class="adm-nav" data-tab="players" type="button"><svg class="ic"><use href="#i-users"/></svg>Livreurs</button>
+                <button class="adm-nav" data-tab="stats" type="button"><svg class="ic"><use href="#i-chart"/></svg>Statistiques</button>
+                <button class="adm-nav" data-tab="rush" type="button"><svg class="ic"><use href="#i-zap"/></svg>Événement <b id="nav-rush" hidden>ON</b></button>
+                <button class="adm-nav" data-tab="history" type="button"><svg class="ic"><use href="#i-history"/></svg>Historique</button>
+                <div class="adm-side-foot">
+                    <button class="adm-toggle" id="adm-toggle" type="button"><span class="sw"></span><span id="adm-toggle-label">Recrutement ouvert</span></button>
+                    <button class="adm-btn ghost wide" id="adm-close" type="button">Fermer <kbd>Échap</kbd></button>
+                </div>
+            </nav>
+
+            <main class="adm-main">
+                <div class="adm-stats">
+                    <div class="stat"><span>Tournées en cours</span><b class="c-accent" id="st-live">0</b></div>
+                    <div class="stat"><span>Colis livrés (24 h)</span><b class="c-info" id="st-parcels">0</b></div>
+                    <div class="stat"><span>Tournées complètes</span><b class="c-ok" id="st-rate">—</b></div>
+                    <div class="stat"><span>Versé (24 h)</span><b class="c-warn" id="st-paid">0 $</b></div>
+                </div>
+
+                <section class="adm-tab" data-tab="live">
+                    <h2>Tournées en cours</h2>
+                    <div id="live-list"></div>
+                </section>
+
+                <section class="adm-tab" data-tab="settings" hidden>
+                    <h2>Réglages</h2>
+                    <form class="grid" id="settings-form">
+                        <label>Caution du van ($)<input type="number" name="deposit" min="0" step="50"></label>
+                        <label>Paie par km depuis le dépôt ($)<input type="number" name="perKm" min="0" step="5"></label>
+                        <label>Multiplicateur de paie (x)<input type="number" name="payMultiplier" min="0.1" max="10" step="0.05"></label>
+                        <label>Multiplicateur d'XP (x)<input type="number" name="xpMultiplier" min="0.1" max="10" step="0.05"></label>
+                        <label>Client présent (%)<input type="number" name="presentChance" min="0" max="100" step="5"></label>
+                        <label>Chance de pourboire (%)<input type="number" name="tipChance" min="0" max="100" step="5"></label>
+                        <label>Délai entre deux tournées (min)<input type="number" name="cooldown" min="0" max="1440" step="1"></label>
+                        <label>Tournées simultanées max<input type="number" name="maxActive" min="1" max="100" step="1"></label>
+                        <label>Plafond de gains par heure ($, 0 = aucun)<input type="number" name="capPerHour" min="0" step="1000"></label>
+                        <label>Paie au-delà du plafond (%)<input type="number" name="capRate" min="0" max="100" step="5"></label>
+                        <label>Récompense classement · 1er ($)<input type="number" name="reward1" min="0" step="500"></label>
+                        <label>Récompense classement · 2e ($)<input type="number" name="reward2" min="0" step="500"></label>
+                        <label>Récompense classement · 3e ($)<input type="number" name="reward3" min="0" step="500"></label>
+                        <label>Prime de nuit sur les colis (%)<input type="number" name="nightBonus" min="0" max="500" step="5"></label>
+                        <label>Satisfaction min. clients premium (★)<input type="number" name="premiumRating" min="1" max="5" step="0.1"></label>
+                    </form>
+                    <p class="hint">Paie d'un colis = (base du type + km × paie par km) × niveau × multiplicateur × note client. Les types de colis et les tournées se règlent dans config.lua.</p>
+                    <div class="row-actions">
+                        <button class="adm-btn ghost" data-action="resetCooldowns" type="button">Remettre les délais à zéro</button>
+                        <button class="adm-btn primary" id="settings-save" type="button">Enregistrer</button>
+                    </div>
+                </section>
+
+                <section class="adm-tab" data-tab="positions" hidden>
+                    <h2>Positions</h2>
+                    <p class="hint">Place-toi à l'endroit voulu en jeu puis clique : ta position actuelle est enregistrée. Pour la place du van, regarde dans la direction où il doit être garé.</p>
+
+                    <div class="block">
+                        <div class="block-head"><h3>Dépôt</h3></div>
+                        <div class="pos-row" id="pos-npc"></div>
+                        <div id="pos-vans"></div>
+                        <div class="pos-row" id="pos-return"></div>
+                    </div>
+
+                    <div class="block">
+                        <div class="block-head">
+                            <h3>Adresses de livraison</h3>
+                            <div class="inline">
+                                <input type="text" id="addr-label" maxlength="40" placeholder="Nom (facultatif, sinon rue auto)">
+                                <select id="addr-zone"></select>
+                                <button class="adm-btn primary sm" id="add-address" type="button">Ajouter ma position</button>
+                            </div>
+                        </div>
+                        <div class="zone-filter" id="addr-filter"></div>
+                        <div id="pos-addresses"></div>
+                    </div>
+                </section>
+
+                <section class="adm-tab" data-tab="players" hidden>
+                    <h2>Livreurs</h2>
+                    <p class="hint">Régler un niveau place l'XP du livreur au seuil de ce niveau. Les primes des niveaux sautés ne sont pas versées.</p>
+                    <div id="players-list"></div>
+                </section>
+
+                <section class="adm-tab" data-tab="stats" hidden>
+                    <div class="block-head">
+                        <h2>Statistiques</h2>
+                        <div class="zone-filter" id="stats-range">
+                            <button data-days="7" class="active" type="button">7 jours</button>
+                            <button data-days="14" type="button">14 jours</button>
+                            <button data-days="30" type="button">30 jours</button>
+                        </div>
+                    </div>
+                    <div class="kpis" id="stats-kpis"></div>
+                    <div class="block">
+                        <div class="block-head"><h3>Argent distribué par jour</h3><span class="sub" id="stats-peak"></span></div>
+                        <div class="chart" id="stats-chart"></div>
+                    </div>
+                    <div class="stats-split">
+                        <div class="block">
+                            <div class="block-head"><h3>Tournées les plus jouées</h3></div>
+                            <div id="stats-tours"></div>
+                        </div>
+                        <div class="block">
+                            <div class="block-head"><h3>Causes d'échec</h3></div>
+                            <div id="stats-reasons"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="adm-tab" data-tab="rush" hidden>
+                    <h2>Événement</h2>
+                    <div class="rush-live" id="rush-live" hidden>
+                        <div><span class="badge delivering">En cours</span><strong id="rl-label">—</strong><span class="sub" id="rl-text">—</span></div>
+                        <span class="mono" id="rl-left">—</span>
+                        <button class="adm-btn danger sm" data-action="rushStop" type="button">Arrêter</button>
+                    </div>
+                    <p class="hint">Un événement multiplie la paie, l'XP ou le nombre de colis pendant une durée donnée. Il est annoncé à tous les joueurs connectés. Le plafond horaire suit le multiplicateur de paie.</p>
+                    <div class="block">
+                        <div class="block-head"><h3>Modèles</h3></div>
+                        <div class="zone-filter" id="rush-presets"></div>
+                    </div>
+                    <form class="grid" id="rush-form">
+                        <label>Nom de l'événement<input type="text" name="label" maxlength="40" placeholder="Double paie"></label>
+                        <label>Durée (min)<input type="number" name="minutes" min="1" max="1440" step="5" value="30"></label>
+                        <label>Multiplicateur de paie (x)<input type="number" name="pay" min="0.5" max="5" step="0.1" value="2"></label>
+                        <label>Multiplicateur d'XP (x)<input type="number" name="xp" min="0.5" max="5" step="0.1" value="1"></label>
+                        <label>Multiplicateur de colis par tournée (x)<input type="number" name="parcels" min="0.5" max="3" step="0.1" value="1"></label>
+                    </form>
+                    <div class="row-actions">
+                        <button class="adm-btn primary" id="rush-start" type="button">Lancer l'événement</button>
+                    </div>
+                </section>
+
+                <section class="adm-tab" data-tab="history" hidden>
+                    <div class="block-head"><h2>Historique</h2><button class="adm-btn ghost sm" data-action="clearHistory" type="button">Vider</button></div>
+                    <div id="history-list"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="toasts" id="toasts"></div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

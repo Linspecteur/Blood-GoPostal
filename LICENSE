@@ -1,0 +1,32 @@
+Licence BloodLeak - Utilisation libre, sans revente ni redistribution
+Copyright (c) 2026 BloodLeak
+
+Ce logiciel est mis à disposition gratuitement, aux conditions suivantes.
+
+AUTORISÉ
+1. Utiliser ce logiciel sur un ou plusieurs serveurs FiveM, y compris un serveur
+   qui propose une boutique ou des avantages payants.
+2. Modifier le code pour l'adapter à son propre serveur.
+
+INTERDIT
+3. Vendre ce logiciel, en version originale ou modifiée, seul ou inclus dans un
+   pack, quel que soit le moyen (Tebex, escrow, vente directe, abonnement...).
+4. Republier ou redistribuer ce logiciel, en version originale ou modifiée, en
+   dehors du dépôt officiel (GitHub, forums, Discord, sites de téléchargement...).
+   Un fork sur GitHub est permis uniquement pour proposer des modifications au
+   dépôt officiel.
+5. Retirer ou modifier les crédits : le champ "author" du fxmanifest.lua, ce
+   fichier LICENSE et les mentions de BloodLeak doivent être conservés.
+
+GARANTIE
+Ce logiciel est fourni "tel quel", sans garantie d'aucune sorte. L'auteur ne
+peut être tenu responsable d'aucun dommage lié à son utilisation.
+
+Toute utilisation contraire à ces conditions met fin au droit d'utiliser ce
+logiciel.
+
+---
+
+Summary (English): free to use and modify on your own FiveM server(s). Selling,
+re-uploading or redistributing (original or modified) and removing credits are
+forbidden. Provided "as is", without warranty. The French text above prevails.
